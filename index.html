@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Кафедра прикладной киберентики СПбГУ</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    
+    
+    
+        <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      *, *:after, *:before {
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
+  background-image: url(images/bg-light-4868.png);
+}
+
+.animenu__toggle {
+  display: none;
+  cursor: pointer;
+  background-color: #111;
+  border: 0;
+  padding: 10px;
+  height: 40px;
+  width: 40px;
+}
+.animenu__toggle:hover {
+  background-color: #0186ba;
+}
+
+.animenu__toggle__bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+  transition: 0.15s cubic-bezier(0.75, -0.55, 0.25, 1.55);
+}
+.animenu__toggle__bar + .animenu__toggle__bar {
+  margin-top: 4px;
+}
+
+.animenu__toggle--active .animenu__toggle__bar {
+  margin: 0;
+  position: absolute;
+}
+.animenu__toggle--active .animenu__toggle__bar:nth-child(1) {
+  transform: rotate(45deg);
+}
+.animenu__toggle--active .animenu__toggle__bar:nth-child(2) {
+  opacity: 0;
+}
+.animenu__toggle--active .animenu__toggle__bar:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.animenu {
+  display: block;
+  position: fixed;
+  width:100%;
+  left:0px;
+  top:0px;
+}
+.animenu ul {
+  padding: 0;
+  list-style: none;
+  font: 0px 'Roboto', sans-serif;
+}
+.animenu li, .animenu a {
+  display: inline-block;
+  font-size: 15px;
+}
+.animenu a {
+  color: #aaaaaa;
+  text-decoration: none;
+}
+
+.animenu__nav {
+  background-color: #111;
+}
+.animenu__nav > li {
+  position: relative;
+  border-right: 0px solid #444444;
+}
+.animenu__nav > li > a {
+  padding: 10px 30px;
+  text-transform: none;
+}
+
+.animenu__nav > li:hover > ul {
+  opacity: 1;
+  visibility: visible;
+  margin: 0;
+}
+.animenu__nav > li:hover > a {
+  color: #fff;
+}
+
+.animenu__nav__child {
+  min-width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  margin: 20px 0 0 0;
+  background-color: #373737;
+  transition: margin .15s, opacity .15s;
+}
+.animenu__nav__child > li {
+  width: 100%;
+  border-bottom: 1px solid #515151;
+}
+.animenu__nav__child > li:first-child > a:after {
+  content: '';
+  position: absolute;
+  height: 0;
+  width: 0;
+  left: 1em;
+  top: -6px;
+  border: 6px solid transparent;
+  border-top: 0;
+  border-bottom-color: inherit;
+}
+.animenu__nav__child > li:last-child {
+  border: 0;
+}
+.animenu__nav__child a {
+  padding: 10px;
+  width: 100%;
+  border-color: #373737;
+}
+.animenu__nav__child a:hover {
+  background-color: #0186ba;
+  border-color: #0186ba;
+  color: #fff;
+}
+
+@media screen and (max-width: 800px) {
+
+  .animenu__toggle {
+    display: inline-block;
+  }
+
+  .animenu__nav,
+  .animenu__nav__child {
+    display: none;
+  }
+
+  .animenu__nav {
+    margin: 10px 0;
+  }
+  .animenu__nav > li {
+    width: 100%;
+    border-right: 0;
+    border-bottom: 0px solid #515151;
+  }
+  .animenu__nav > li:last-child {
+    border: 0;
+  }
+  .animenu__nav > li:first-child > a:after {
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    left: 1em;
+    top: -6px;
+    border: 6px solid transparent;
+    border-top: 0;
+    border-bottom-color: inherit;
+  }
+  .animenu__nav > li > a {
+    width: 100%;
+    padding: 10px;
+    border-color: #111;
+    position: relative;
+  }
+  .animenu__nav a:hover {
+    background-color: #0186ba;
+    border-color: #0186ba;
+    color: #fff;
+  }
+
+  .animenu__nav__child {
+    position: static;
+    background-color: #373737;
+    margin: 0;
+    transition: none;
+    visibility: visible;
+    opacity: 1;
+  }
+  .animenu__nav__child > li:first-child > a:after {
+    content: none;
+  }
+  .animenu__nav__child a {
+    padding-left: 20px;
+    width: 100%;
+  }
+}
+.animenu__nav--open {
+  display: block !important;
+}
+.animenu__nav--open .animenu__nav__child {
+  display: block;
+}
+
+</style>
+
+    
+        <script src="js/prefixfree.min.js"></script>
+
+    
+  </head>
+
+  <body>
+
+    <nav class="animenu"> 
+  <button class="animenu__toggle">
+    <span class="animenu__toggle__bar"></span>
+    <span class="animenu__toggle__bar"></span>
+    <span class="animenu__toggle__bar"></span>
+  </button>
+  <ul class="animenu__nav">
+    <li>
+      <a href="index.html"><b>Главная</b></a>
+    </li>
+    <li>
+      <a href="#">Учебный процесс</a>
+      <ul class="animenu__nav__child">
+        <li><a href="applicants.html">Абитуриентам</a></li>
+        <li><a href="students.html">Второкурсникам</a></li>
+        <li><a href="spec_courses.html">Спец-курсы</a></li>
+      </ul>
+    </li>     
+    <li>
+      <a href="scientific_activity.html">Научная деятельность</a>
+    </li>
+    <li>
+      <a href="employees.html">Сотрудники</a>
+    </li>
+    <li>
+      <a href="contacts.html">Контакты</a>
+    </li>   
+  </ul>
+</nav>
+<!--<style>
+.image-class{
+overflow: hidden;
+position: absolute;
+z-index: 100;
+top: 7px;
+right:3px;
+}
+</style>
+    <div class="image-class">
+         <a href="index.html"><img src="images/logo_leo.jpg" width="38" height="38"alt="фильм" /></a>
+    </div>
+-->
+<br>
+<br>
+<br>
+<style>
+   .rightimg  {
+    float: right;
+    margin: 7px 0 7px 7px; 
+
+   }
+</style>
+<style>
+   .leftimg  {
+    float: left;
+    margin: 7px 7px 7px 0; 
+
+   }
+</style>
+<center>
+  <p><a href="index.html"><img src="images/logo_leo.jpg" width="100" height="90"alt="Сайт кафедры" class="leftimg"></a><a href="http://www.math.spbu.ru/rus/"><img src="images/logo.jpg" width="100" height="90" alt="Сайт факультета" class="rightimg"></a><font size="3">Математико-механический факультет <br> Санкт-Петербургского государственного университета</font></p>
+  <br>
+  <p><font size="5" color="0186ba">Кафедра прикладной кибернетики</font></p>
+  <br>
+</center>
+
+<p style="margin-left: 5%; margin-top: 0px;"><font size="5"><b>О прикладной кибернетике</font></b></p>
+<br>
+<br>
+<br>
+<p style="margin-left: 15%; margin-right: 15%; margin-top: 0px;"><font size="4">Начиная с античных времен, математика является царицей всех наук. Но время неумолимо бежит вперед и с развитием современных технологий возникает множество сложнейших процессов. Возможно ли их описать с помощью формул и уравнений? Поиском ответа на этот вопрос и занимается Прикладная кибернетика, которая использует математический аппарат для исследования и прогнозирования эволюции сложных процессов. Как правило, тот или иной процесс может быть описан с помощью дифференциальных, интегральных, функциональных или конечноразностных уравнений и представляет собой динамическую систему. Дальнейший анализ такого объекта происходит с использованием, если это возможно, точных или численных методов. Практическая потребность в изучении динамических систем возникает во многих областях, таких как электротехника, робототехника, биофизика и многих других.</font></p>
+<br>
+<style>
+  a { 
+    text-decoration: none;
+  } 
+</style>
+<p style="margin-left: 15%; margin-right: 15%; margin-top: 0px;"><font size="4">За последние годы требования к выпускникам по специальности «Прикладная математика и информатика » претерпели существенные изменения. В связи с тем, что в настоящее время выпускникам по этой специальности присваивается квалификация «Математик. Системный программист», оказалось необходимым ввести новые специальные курсы и семинары по применению кибернетики в информационных технологиях. Эти спецкурсы и спецсеминары предусмотрены в учебном плане кафедры. В них соединены высокий математический уровень разработки алгоритмического обеспечения с современными архитектурами, операционными системами и технологиями программирования. Более подробную информация находится в разделе <a href="spec_courses.html"><font color="0186ba">Спец-курсы</font></a></font></p>
+<br>
+<br>
+<br>
+<p style="margin-left: 5%; margin-top: 0px;"><font size="5"><b>Успехи кафедры</font></b></p>
+<br>
+<br>
+<br>
+<p style="margin-left: 15%; margin-right: 15%; margin-top: 0px;"><font size="4">1. За последние 5 лет больше 15 успешных защит под руководством сотрудников кафедры, в том числе: </font></p>
+<br>
+<br>
+<div id="block1">
+<style>
+   #block1 li {
+    list-style-type: square;
+   }
+   #block1 ul {
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-left: 0; 
+   }
+  </style>
+
+  <ul>
+   <li><font size="4">Защиты диссертаций на степени Philosophy Doctor (Computer Science) в университете Jyvaskyla, Finland</font></li>
+   <li><font size="4">Защиты диссертаций на степени кандидадата наук по математике</font></li>
+   <li><font size="4">Защиты диссертаций на степени PhD SPbU</font></li>
+  </ul>
+ </div>
+
+<br>
+<br>
+<br>
+<p style="margin-left: 15%; margin-right: 15%; margin-top: 0px;"><font size="4">2. Лучшие студенты и аспиранты кафедры регулярно становятся победителями конкурсов на стипендии:  </font></p>
+<br>
+<br>
+<div id="block1">
+<style>
+   #block1 li {
+    list-style-type: square;
+   }
+   #block1 ul {
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-left: 0; 
+   }
+  </style>
+
+  <ul>
+   <li><font size="4">Стипендия президента РФ для обучения за рубежом (15 000 - 20 000 евро)</font></li>
+   <li><font size="4">Стипендия университета Ювяскюля (COMAS 9000 евро)</font></li>
+   <li><font size="4">Стипендия FICS (800 евро в месяц)</font></li>
+   <li><font size="4">Стипендия DAAD для обучения в Германии</font></li>
+  </ul>
+ </div>
+
+<br>
+<br>
+<br>
+<p style="margin-left: 15%; margin-right: 15%; margin-top: 0px;"><font size="4">3. Сотрудники кафедры активно публикуют научные результаты в ведущих международных журналах и на конференциях (Г.А. Леонов - больше 100 публикаций за последние три года по данным scholar.google.com, Н.В. Кузнецов - больше 60 публикаций за последние три года по данным scholar.google.com)  </font></p>
+
+<br>
+<br>
+<br>
+<p style="margin-left: 15%; margin-right: 15%; margin-top: 0px;"><font size="4">4. Выпускники кафедры работают в лучших софтверных компаниях: Яндекс, Oracle, Mail.ru, JetBrains, New York Times, EMC, Спутник, Exigen services </font></p>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="js/index.js"></script>
+
+    <script type="text/javascript" src="http://arrow.scrolltotop.com/arrow86.js"></script>
+    
+    
+  </body>
+</html>
